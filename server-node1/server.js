@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const app= express();
+const product = require("./product.json");
 
 var cors = require('cors'); //HTTP access control (CORS) for cross origin requests
 
@@ -18,6 +19,10 @@ app.get('/api', (req, res) => {
     res.send(JSON.stringify(jsonData));
 });
 
+app.get('/api/product', (req, res) => {
+   res.setHeader('Content-Type', 'application/json');
+   res.send(product);
+});
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
